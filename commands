@@ -12,3 +12,20 @@ pwd ----> /home/ubuntu/jenkins (copy this root address)
 #manage jenkins--> manage nodes--->new node---> fill in the ff (name| desc| No of executors| remote root directory:home/ubuntu/jenkins| usage:as much as possible| launch method: via SSH, host: IP address of slave, credentials: add, kind SSH Username with private key, username: ubuntu, Private key: copy and paste key PEM| host key verification strategy: Manually trusted key verification strategy
 save
 the node should connect and be inSinc.
+
+
+======= slave/master config on AMZ EC2 instance  ==============
+create your servers AMI (on AWS, go to ec2 instances---> select the server--> click on actions dropdown---> select images and templates---> create image
+change the AMI permission to public
+crate an instance using the AMI image.
+launch instance and connect via git bash
+it will prompt you to login as ubuntu...change root to ubuntu in these command "ssh -i "mavenserverKP.pem" root@ec2-35-183-130-136.ca-central-1.compute.amazonaws.com"
+sudo mkdir jenkins
+sudo chmod 777 -R jenkins
+cd jenkins
+pwd ----> /home/EC2-USER/jenkins (copy this root address)
+#launch jenkins master node: IP address:8080 on your URL
+#manage jenkins--> manage nodes--->new node---> fill in the ff (name| desc| No of executors| remote root directory:home/ec2-user/jenkins| usage:as much as possible| launch method: via SSH, host: IP address of slave, credentials: add, kind SSH Username with private key, username: ubuntu, Private key: copy and paste key PEM| host key verification strategy: Manually trusted key verification strategy
+save
+the node should connect and be inSinc.
+
